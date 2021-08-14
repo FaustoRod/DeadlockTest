@@ -32,7 +32,7 @@ namespace DeadlockTest.Business.Services
                 var result = await _context.SaveChangesAsync();
                 return result > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -85,6 +85,32 @@ namespace DeadlockTest.Business.Services
         {
             var dbSet = _context.Set<T>();
             return await dbSet.FindAsync(id);
+        }
+
+        public async Task<T> GetBySingle(Expression<Func<T, bool>> expression)
+        {
+            var dbSet = _context.Set<T>();
+            var result = await dbSet.Where(expression).SingleOrDefaultAsync();
+            return result;
+        }
+
+        public async Task<TViewModel> GetBySingle<TViewModel>(Expression<Func<T, bool>> expression)
+        {
+            var result = await GetBySingle(expression);
+            if(result != null)
+            {
+                try
+                {
+                    var mappedResult = _mapper.Map<TViewModel>(result);
+                    return mappedResult;
+                }
+                catch (Exception ex)
+                {
+                    return default(TViewModel);
+                }
+            }
+
+            return default(TViewModel);
         }
 
         public virtual async Task<IList<T>> GetList()

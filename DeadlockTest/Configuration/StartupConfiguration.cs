@@ -10,6 +10,7 @@ namespace DeadlockTest.Configuration
         {
             service.AddTransient<IItemService, ItemService>();
             service.AddTransient<IOrderService, OrderService>();
+            service.AddTransient<IItemOrderService, ItemOrderService>();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace DeadlockTest.Data.Profiles
         public ItemProfile()
         {
             CreateMap<Item, ItemDto>().ReverseMap();
+            CreateMap<OrderItem, ItemOrderDto>().ReverseMap();
         }
     }
 }

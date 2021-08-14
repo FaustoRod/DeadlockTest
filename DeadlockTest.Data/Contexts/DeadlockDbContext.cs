@@ -1,4 +1,5 @@
 ﻿using DeadlockTest.Data.ModelConfigurations;
+using DeadlockTest.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeadlockTest.Data.Contexts
@@ -10,6 +11,9 @@ namespace DeadlockTest.Data.Contexts
             
         }
 
+        public DbSet<Order> Orders{ get; set; }
+        public DbSet<Item> Items{ get; set; }
+        public DbSet<OrderItem> OrderItems{ get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new OrderConfiguration());

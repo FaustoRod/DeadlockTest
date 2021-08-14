@@ -39,8 +39,8 @@ namespace DeadlockTest.Controllers
         }
 
         // POST api/<ItemController>
-        [HttpPost]
-        public async Task<IActionResult> Post(ItemDto createDto)
+        [HttpPost("create")]
+        public async Task<IActionResult> Create(ItemDto createDto)
         {
             var result = await _service.Create<ItemDto>(createDto);
             return StatusCode(result ? 201 : 500);
@@ -48,7 +48,7 @@ namespace DeadlockTest.Controllers
         }
 
         // PUT api/<ItemController>/5
-        [HttpPut]
+        [HttpPut("update")]
         public async Task<IActionResult> Put(ItemDto value)
         {
             var result = await _service.Edit<ItemDto>(value);
