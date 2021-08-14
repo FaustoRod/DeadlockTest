@@ -14,6 +14,7 @@ namespace DeadlockTest.Data.Contexts
         {
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
         }
     }
 }
