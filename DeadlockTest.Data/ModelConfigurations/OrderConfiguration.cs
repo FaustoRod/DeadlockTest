@@ -10,7 +10,7 @@ namespace DeadlockTest.Data.ModelConfigurations
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.Property(x => x.Code)
-               .HasDefaultValue<string>(Guid.NewGuid());
+               .HasDefaultValue<string>(Guid.NewGuid().ToString());
 
         }
     }
